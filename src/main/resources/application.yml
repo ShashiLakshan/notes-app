@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: notes-app
+  data:
+    mongodb:
+      host: localhost
+      username: root
+      password: root
+      database: notes_app
+      port: 27017
+
+
