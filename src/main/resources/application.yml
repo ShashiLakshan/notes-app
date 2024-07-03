@@ -9,7 +9,8 @@ spring:
       host: localhost
       username: root
       password: root
-      database: notes_app
+      database: note_app
       port: 27017
+      authentication-database: admin
 
 
