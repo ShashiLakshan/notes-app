@@ -8,10 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +20,7 @@ import java.util.stream.StreamSupport;
 
 @ControllerAdvice
 @Slf4j
-public class ControllerAdvisor extends ResponseEntityExceptionHandler {
+public class ControllerAdvisor {
 
     @ExceptionHandler({CustomGlobalException.class})
     public ResponseEntity<Object> handleCustomGlobalException(CustomGlobalException e, WebRequest request) {
@@ -39,8 +39,14 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(statusResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler({MethodArgumentNotValidException.class})
+    public ResponseEntity<Object> handleMException(MethodArgumentNotValidException e, WebRequest request) {
+        StatusResponse statusResponse = StatusResponse.builder().code("APP_400")
+                .message(Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage()).build();
+        return new ResponseEntity<>(statusResponse, HttpStatus.BAD_REQUEST);
+    }
 
-    @ExceptionHandler(ConstraintViolationException.class)
+    @ExceptionHandler({ConstraintViolationException.class})
     public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException e, WebRequest request) {
         List<StatusResponse> statusResponseList = buildValidationErrors(e.getConstraintViolations());
         return new ResponseEntity<>(statusResponseList, HttpStatus.BAD_REQUEST);

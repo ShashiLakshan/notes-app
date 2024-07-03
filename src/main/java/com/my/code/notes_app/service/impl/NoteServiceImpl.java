@@ -5,6 +5,7 @@ import com.my.code.notes_app.entity.NoteEntity;
 import com.my.code.notes_app.mapper.NoteMapper;
 import com.my.code.notes_app.repository.NoteRepository;
 import com.my.code.notes_app.service.NoteService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
