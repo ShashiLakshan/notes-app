@@ -4,6 +4,8 @@ import com.my.code.notes_app.dto.NoteDto;
 import com.my.code.notes_app.entity.NoteEntity;
 import com.my.code.notes_app.enums.TagType;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +22,23 @@ public class NoteMapper {
                 .text(noteDto.getText())
                 .tags(!CollectionUtils.isEmpty(noteDto.getTags()) ? toTagTypeList(noteDto.getTags()) : null)
                 .build();
+    }
+
+    public static NoteEntity toUpdateEntity(NoteDto noteDto, NoteEntity noteEntity) {
+
+        if (StringUtils.hasText(noteDto.getTitle()) && !noteDto.getTitle().equals(noteEntity.getTitle())) {
+            noteEntity.setTitle(noteDto.getTitle());
+        }
+        if (StringUtils.hasText(noteDto.getText()) && !noteDto.getText().equals(noteEntity.getText())) {
+            noteEntity.setText(noteDto.getText());
+        }
+        if (!ObjectUtils.isEmpty(noteDto.getCreatedDate()) && !noteDto.getCreatedDate().equals(noteEntity.getCreatedDate())) {
+            noteEntity.setCreatedDate(noteDto.getCreatedDate());
+        }
+        if (!CollectionUtils.isEmpty(noteDto.getTags()) && !toTagTypeList(noteDto.getTags()).equals(noteEntity.getTags())) {
+            noteEntity.setTags(toTagTypeList(noteDto.getTags()));
+        }
+        return noteEntity;
     }
 
     public static NoteDto toDto(NoteEntity noteEntity) {

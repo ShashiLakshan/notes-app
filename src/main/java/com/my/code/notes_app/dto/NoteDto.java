@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.my.code.notes_app.annotation.ValidTag;
-import com.my.code.notes_app.enums.TagType;
 import com.my.code.notes_app.marker_interfaces.CreateMarker;
+import com.my.code.notes_app.marker_interfaces.UpdateMarker;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -29,6 +29,7 @@ public class NoteDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    @NotBlank(groups = UpdateMarker.class)
     private String id;
 
     @NotBlank(groups = CreateMarker.class)
