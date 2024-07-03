@@ -23,9 +23,13 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+    - name: Extract project version
+      id: extract_version
+      run: echo "VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+
     - name: Set Docker tag
       id: docker_tag
-      run: echo "TAG=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+      run: echo "TAG=${{ env.VERSION }}-$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
 
     - name: Build Docker image
       run: docker build . -t ${{ secrets.DOCKER_HUB_USERNAME }}/notes-app:${{ env.TAG }}
