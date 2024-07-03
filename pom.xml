@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.my.code</groupId>
 	<artifactId>notes-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>notes-app</name>
 	<description>notes app project</description>
 	<url/>
