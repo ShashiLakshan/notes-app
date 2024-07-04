@@ -32,7 +32,6 @@ public class NoteDto extends RepresentationModel<NoteDto> implements Serializabl
     private static final long serialVersionUID = 1L;
 
     @NotBlank(groups = UpdateMarker.class)
-    @JsonIgnore
     private String id;
 
     @NotBlank(groups = CreateMarker.class)
