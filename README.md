@@ -5,6 +5,7 @@ User notes can be saved with Title, CreatedDate, Text and Tags such as BUSINESS,
 
 CI pipeline has been configured with GitHub : https://github.com/ShashiLakshan/notes-app/actions/workflows/maven.yml
 
+Docker Image pushed to https://hub.docker.com/repository/docker/lakshanc/notes-app/general
 ## Prerequisites
 
 - Java 17 or later
