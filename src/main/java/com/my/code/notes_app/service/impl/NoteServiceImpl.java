@@ -2,10 +2,12 @@ package com.my.code.notes_app.service.impl;
 
 import com.my.code.notes_app.dto.NoteDto;
 import com.my.code.notes_app.entity.NoteEntity;
+import com.my.code.notes_app.enums.TagType;
 import com.my.code.notes_app.exception.CustomGlobalException;
 import com.my.code.notes_app.mapper.NoteMapper;
 import com.my.code.notes_app.repository.NoteRepository;
 import com.my.code.notes_app.service.NoteService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -35,6 +37,15 @@ public class NoteServiceImpl implements NoteService {
         NoteEntity noteEntity = getNoteById(id);
         noteRepository.delete(noteEntity);
     }
+
+    @Override
+    public List<NoteDto> filterNotes(List<TagType> tags) {
+        if (tags.isEmpty()) {
+            return noteRepository.findAll().stream().map(NoteMapper::toDto).toList();
+        }
+        return noteRepository.findByTagsIn(tags).stream().map(NoteMapper::toDto).toList();
+    }
+
 
     private NoteEntity getNoteById(String id) {
         return noteRepository.findById(id)

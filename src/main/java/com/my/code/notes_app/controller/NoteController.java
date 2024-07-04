@@ -1,8 +1,12 @@
 package com.my.code.notes_app.controller;
 
 import com.my.code.notes_app.dto.NoteDto;
+import com.my.code.notes_app.entity.NoteEntity;
+import com.my.code.notes_app.enums.TagType;
 import com.my.code.notes_app.service.NoteService;
 import jakarta.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -33,5 +37,10 @@ public class NoteController {
     public ResponseEntity<Void> deleteNote(@PathVariable("id") String id) {
         noteService.deleteNoteById(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<NoteDto>> filterNotes(@RequestParam TagType[] tags) {
+        return ResponseEntity.status(HttpStatus.OK).body(noteService.filterNotes(Arrays.asList(tags)));
     }
 }
