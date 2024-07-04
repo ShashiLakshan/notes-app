@@ -39,3 +39,15 @@ mvn clean install
 mvn spring-boot:run
 ```
 The application will start and be accessible at http://localhost:8080.
+
+
+## REST APIs
+### Request
+POST /api/v1/notes
+```json
+{
+    "title": "Note Title",
+    "content": "Note Content"
+}
+```
+### Response
