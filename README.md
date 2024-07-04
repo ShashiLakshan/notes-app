@@ -1,4 +1,4 @@
-# Rule Engine
+# User Notes App
 
 This is a Spring Boot 3.3.1 application that uses MongoDb as its database. The project utilizes Testcontainers for integration testing with a containerized MongoDb instance.
 
