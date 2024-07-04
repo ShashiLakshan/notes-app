@@ -7,8 +7,11 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - /Users/shashi/Dockers/MongoDb/data:/data/db
+      - ~/mongo/data:/data/db
+      - ./init-scripts:/docker-entrypoint-initdb.d
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: notes-app
+    command: ["mongod", "--auth"]
 

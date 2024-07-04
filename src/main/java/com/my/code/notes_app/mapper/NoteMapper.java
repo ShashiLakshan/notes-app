@@ -44,10 +44,20 @@ public class NoteMapper {
     public static NoteDto toDto(NoteEntity noteEntity) {
         return NoteDto
                 .builder()
+                .id(noteEntity.getId())
                 .title(noteEntity.getTitle())
                 .createdDate(noteEntity.getCreatedDate())
                 .text(noteEntity.getText())
                 .tags(noteEntity.getTags() != null ? toTagStringList(noteEntity.getTags()) : null)
+                .build();
+    }
+
+    public static NoteDto toSummaryDto(NoteEntity noteEntity) {
+        return NoteDto
+                .builder()
+                .id(noteEntity.getId())
+                .title(noteEntity.getTitle())
+                .createdDate(noteEntity.getCreatedDate())
                 .build();
     }
 

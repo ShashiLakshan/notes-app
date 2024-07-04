@@ -10,13 +10,12 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
-@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Builder
 @Document(collection = "note")
 public class NoteEntity implements Serializable {
@@ -32,4 +31,29 @@ public class NoteEntity implements Serializable {
     private LocalDateTime createdDate;
     private String text;
     private List<TagType> tags;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NoteEntity that = (NoteEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(createdDate, that.createdDate)
+                && Objects.equals(text, that.text) && Objects.equals(tags, that.tags);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, createdDate, text, tags);
+    }
+
+    @Override
+    public String toString() {
+        return "NoteEntity{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", createdDate=" + createdDate +
+                ", text='" + text + '\'' +
+                ", tags=" + tags +
+                '}';
+    }
 }
