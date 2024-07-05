@@ -115,6 +115,7 @@ The application will start and be accessible at http://localhost:8080.
 
 ### GET /api/v1/notes?tags=BUSINESS,PERSONAL&page=0&size=2&sortDirection=DESC
 #### Response
+HEATEOAS used to fetch full note's data
 ```json
 {
   "content": [
