@@ -119,18 +119,18 @@ The application will start and be accessible at http://localhost:8080.
 {
   "content": [
     {
-      "Id": "66871a7abb691d0b86e47392",
-      "Title": "Sample Note 1",
-      "CreatedDate": "2024-08-28 12:00:00",
-      "Text": "This is a sample note 1.",
-      "Tags": ["BUSINESS", "PERSONAL"]
-    },
-    {
       "Id": "66871a7abb691d0b86e47393",
       "Title": "Sample Note 2",
       "CreatedDate": "2024-08-29 12:00:00",
       "Text": "This is a sample note 2.",
       "Tags": ["BUSINESS"]
+    },
+    {
+      "Id": "66871a7abb691d0b86e47392",
+      "Title": "Sample Note 1",
+      "CreatedDate": "2024-08-28 12:00:00",
+      "Text": "This is a sample note 1.",
+      "Tags": ["BUSINESS", "PERSONAL"]
     }
   ],
   "page": 0,
