@@ -1,7 +1,8 @@
 # User Notes App
 
 This is a Spring Boot 3.3.1 application that uses MongoDb as its database. The project utilizes Testcontainers for integration testing with a containerized MongoDb instance.
-User notes can be saved with Title, CreatedDate, Text and Tags such as BUSINESS, PERSONAL and IMPORTANT
+User notes can be saved with Title, CreatedDate, Text and Tags such as BUSINESS, PERSONAL and IMPORTANT.
+Used HEATEOAS
 
 CI pipeline has been configured with GitHub : https://github.com/ShashiLakshan/notes-app/actions/workflows/maven.yml
 
@@ -122,16 +123,12 @@ HEATEOAS used to fetch full note's data
     {
       "Id": "66871a7abb691d0b86e47393",
       "Title": "Sample Note 2",
-      "CreatedDate": "2024-08-29 12:00:00",
-      "Text": "This is a sample note 2.",
-      "Tags": ["BUSINESS"]
+      "CreatedDate": "2024-08-29 12:00:00"
     },
     {
       "Id": "66871a7abb691d0b86e47392",
       "Title": "Sample Note 1",
-      "CreatedDate": "2024-08-28 12:00:00",
-      "Text": "This is a sample note 1.",
-      "Tags": ["BUSINESS", "PERSONAL"]
+      "CreatedDate": "2024-08-28 12:00:00"
     }
   ],
   "page": 0,
